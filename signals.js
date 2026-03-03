@@ -1,0 +1,90 @@
+const SIGNALS_DATA = [
+    {
+        "score": 92,
+        "account": "Health Care LA IPA",
+        "type": "Leadership Change",
+        "urgency": "High",
+        "brands": ["Gravity", "Flow", "Atlas"],
+        "summary": "Health Care LA IPA announced its 2026 Board of Directors on February 23, 2026. The new board consists of 15 C-suite leaders from their 33 member clinics, signaling a strategic transition in governance as they focus on expanding partnerships and fulfilling the Healthcare Quintuple Aim.",
+        "ae": "Baz Patel",
+        "sdr": "Runit Abraham",
+        "source": "HealthCareLA.org",
+        "url": "https://healthcarela.org/news/",
+        "date": "Feb 23, 2026",
+        "tier": "Strategics",
+        "state": "CA",
+        "angle": "Connect with the newly appointed board members to offer a strategic briefing on how Innovaccer can support their goals for integrated care delivery and the Healthcare Quintuple Aim.",
+        "whyMatters": [
+            "A major governance refresh creates a natural window for revisiting strategic technology partnerships.",
+            "The group's focus on cost reduction and population health equity aligns perfectly with Innovaccer's core platforms.",
+            "Direct access to 15 C-suite leaders through this announcement represents a high-leverage entry point."
+        ],
+        "nextSteps": "Outreach to the newly announced board members via Baz Patel to position Innovaccer as a strategic partner for the 2026 mandate."
+    },
+    {
+        "score": 95,
+        "account": "Longitude Health",
+        "type": "IT Transformation",
+        "urgency": "Immediate",
+        "brands": ["Gravity", "PQS"],
+        "summary": "Longitude Health has partnered with Innovaccer to transform specialty pharmacy operations using the Gravity Platform (Longitude Rx). This partnership has already driven measurable results and is a centerpiece of their innovation strategy heading into 2026.",
+        "ae": "Jay Levine",
+        "sdr": "Riddhimaan Bhattacharyya",
+        "source": "LongitudeHealth.org",
+        "url": "https://longitudehealth.org/news/",
+        "date": "Oct 08, 2025",
+        "tier": "Strategics",
+        "state": "-",
+        "angle": "Leverage the existing Gravity success story to expand into other Longitude FX (Financial Experience) initiatives currently in development.",
+        "whyMatters": [
+            "Proven ROI within the Longitude Rx initiative provides a strong internal reference.",
+            "Longitude's expansion to 140 hospitals across 10 states signifies a massive cross-sell opportunity.",
+            "Development of 'Longitude FX' suggests a current need for clinical-financial data integration."
+        ],
+        "nextSteps": "Schedule a business review with Jay Levine to discuss expansion from Specialty Pharmacy into broader financial experience initiatives."
+    },
+    {
+        "score": 88,
+        "account": "Advocate Health",
+        "type": "Leadership Change",
+        "urgency": "High",
+        "brands": ["Gravity", "Story Health", "Cured"],
+        "summary": "Advocate Health appointed Viriga Fuhrmann as its first-ever Executive Vice President and Chief Consumer Officer. Her mandate includes unifying patient journeys and enhancing digital engagement through personalized technology solutions.",
+        "ae": "John Hickey",
+        "sdr": "Ravina Singh",
+        "source": "AdvocateHealth.com",
+        "url": "https://www.advocatehealth.com/news/advocate-health-names-viriga-fuhrmann-first-chief-consumer-officer",
+        "date": "May 20, 2024",
+        "tier": "Strategics",
+        "state": "NC",
+        "angle": "Align with Fuhrmann's consumer-centric mandate by presenting Innovaccer's digital engagement and journey orchestration tools.",
+        "whyMatters": [
+            "Introduction of a CCO role indicates a shift toward top-line patient growth and retention.",
+            "Strategic alignment with 'personalized journeys' requires robust underlying data activation.",
+            "New executive looking for high-impact wins in her first year."
+        ],
+        "nextSteps": "Direct John Hickey to request an introductory meeting focused on the 'Consumer Journey' strategic pillar."
+    },
+    {
+        "score": 85,
+        "account": "Corewell Health",
+        "type": "Leadership Change",
+        "urgency": "High",
+        "brands": ["Gravity", "Comet", "Flow"],
+        "summary": "Corewell Health tapped Bipin Karunakaran as Vice President of Innovation and Digital Care. Karunakaran is responsible for scaling the system's digital care solutions and innovation efforts.",
+        "ae": "Joseph Thompson",
+        "sdr": "Radhika Arora",
+        "source": "Beckers Hospital Review",
+        "url": "https://www.beckershospitalreview.com/digital-health/corewell-health-taps-new-innovation-chief.html",
+        "date": "2024-2025",
+        "tier": "Strategics",
+        "state": "MI",
+        "angle": "Present 'at-scale' digital implementation case studies to align with his mandate of scaling innovation.",
+        "whyMatters": [
+            "Focus on scaling signifies a move from pilot projects to enterprise-wide platform adoption.",
+            "Strategic background suggests an appetite for data-backed ROI metrics.",
+            "New leadership in digital care often triggers a technology stack consolidation."
+        ],
+        "nextSteps": "Coordinate with Joseph Thompson to share a roadmap for enterprise digital scaling."
+    }
+];

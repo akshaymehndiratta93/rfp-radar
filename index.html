@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚨 RFP Radar – Signal Alert Feed</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* MDS Color Palette */
+            --jal-default: #0070DD;
+            --jal-dark: #00509F;
+            --jal-lightest: #DCECF9;
+
+            --mirch-default: #D93737;
+            --neem-default: #2EA843;
+            --haldi-default: #FFC208;
+
+            /* Professional Dark Theme (MDS Aligned) */
+            --bg-color: #0d1117;
+            --sidebar-bg: #161b22;
+            --card-bg: #1c2128;
+            --border-color: #30363d;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --text-muted: #484f58;
+
+            --accent-blue: var(--jal-default);
+            --accent-red: var(--mirch-default);
+            --accent-green: var(--neem-default);
+            --accent-orange: var(--haldi-default);
+
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --sidebar-width: 280px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            letter-spacing: -0.01em;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-box {
+            width: 36px;
+            height: 36px;
+            background-color: var(--jal-default);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 112, 221, 0.3);
+        }
+
+        .nav-section h4 {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 4px;
+            color: var(--text-secondary);
+        }
+
+        .nav-item:hover {
+            background-color: var(--glass-bg);
+            color: var(--text-primary);
+        }
+
+        .nav-item.active {
+            background-color: rgba(0, 112, 221, 0.15);
+            color: var(--jal-default);
+            font-weight: 700;
+            box-shadow: inset 4px 0 0 var(--jal-default);
+        }
+
+        .nav-item .count {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 48px 64px;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 48px;
+        }
+
+        .title-group h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .title-group p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .stat-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .stat-card h5 {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            letter-spacing: 0.05em;
+        }
+
+        .stat-card .value {
+            font-size: 36px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .alert-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .signal-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 32px;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .signal-card:hover {
+            border-color: var(--jal-default);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .score-badge {
+            width: 72px;
+            height: 72px;
+            border: 2px solid var(--jal-default);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: var(--jal-default);
+            background: rgba(0, 112, 221, 0.05);
+        }
+
+        .score-badge span {
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .account-info h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .badge.urgency {
+            background-color: rgba(217, 55, 55, 0.15);
+            color: var(--accent-red);
+        }
+
+        .badge.type {
+            background-color: rgba(255, 194, 8, 0.15);
+            color: var(--accent-orange);
+        }
+
+        .badge.tier {
+            background-color: rgba(0, 112, 221, 0.15);
+            color: var(--jal-default);
+        }
+
+        .signal-summary {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            color: var(--text-primary);
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            border-left: 4px solid var(--jal-default);
+        }
+
+        .owners-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .owner-item h6 {
+            font-size: 10px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.05em;
+        }
+
+        .owner-item p {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .outreach-box {
+            background-color: rgba(0, 112, 221, 0.08);
+            border: 1px solid rgba(0, 112, 221, 0.2);
+            padding: 20px;
+            border-radius: 16px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .icon-blue {
+            width: 24px;
+            height: 24px;
+            background-color: var(--jal-default);
+            border-radius: 6px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .btn-scan {
+            background-color: var(--jal-default);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-family: 'Nunito Sans', sans-serif;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(0, 112, 221, 0.2);
+        }
+
+        .btn-scan:hover {
+            background-color: var(--jal-dark);
+            box-shadow: 0 6px 16px rgba(0, 112, 221, 0.3);
+        }
+
+        .filter-group {
+            display: flex;
+            background-color: var(--glass-bg);
+            padding: 6px;
+            border-radius: 12px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Nunito Sans', sans-serif;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active {
+            background-color: var(--jal-default);
+            color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .signal-card {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(0, 112, 221, 0.4);
+            }
+
+            70% {
+                transform: scale(1.02);
+                box-shadow: 0 0 0 10px rgba(0, 112, 221, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(0, 112, 221, 0);
+            }
+        }
+    </style>
+    <!-- Fallback for local file access (CORS bypass) -->
+    <script src="signals.js"></script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-container">
+            <div class="logo-box">In</div>
+            <div>
+                <h3 style="font-size: 14px;">RFP Radar</h3>
+                <p style="font-size: 11px; color: var(--text-secondary);">Innovaccer - Signal Intel</p>
+            </div>
+        </div>
+
+        <div class="nav-section">
+            <h4>Intelligence</h4>
+            <div class="nav-item active">
+                <span>Signal Feed</span>
+                <span class="count" id="sidebar-total-count">0</span>
+            </div>
+            <div class="nav-item">
+                <span>Strategic Accounts</span>
+                <span class="count" id="sidebar-strategic-count">0</span>
+            </div>
+            <div class="nav-item">
+                <span>Immediate Focus</span>
+                <span class="count" id="sidebar-immediate-count">0</span>
+            </div>
+        </div>
+
+        <div class="nav-section">
+            <h4>Filter By Urgency</h4>
+            <div class="nav-item">
+                <span>🔴 Immediate</span>
+                <span class="count">3</span>
+            </div>
+            <div class="nav-item">
+                <span>🟡 Digest</span>
+                <span class="count">4</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <div class="title-group">
+                <h1>Alert Feed</h1>
+                <p>807 Priority Accounts · Strategics, Enterprises & Top Tier</p>
+                <p id="last-refresh-header" style="font-size: 11px; margin-top: 4px; color: var(--text-secondary);"></p>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
+                    <div class="filter-group">
+                        <button class="filter-btn active" onclick="setFilter('All Signals', this)">All Signals</button>
+                        <button class="filter-btn" onclick="setFilter('Leadership Change', this)">Leadership</button>
+                        <button class="filter-btn" onclick="setFilter('IT Transformation', this)">IT Transf.</button>
+                        <button class="filter-btn" onclick="setFilter('M&A Activity', this)">M&A</button>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <span
+                            style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Brand:</span>
+                        <select id="brand-select" onchange="setBrand(this.value)"
+                            style="background: var(--glass-bg); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 12px; border-radius: 8px; font-family: 'Nunito Sans'; font-size: 13px; font-weight: 600; outline: none;">
+                            <option value="All Brands">All Brands</option>
+                            <option value="Gravity">Gravity</option>
+                            <option value="Comet">Comet</option>
+                            <option value="Flow">Flow</option>
+                            <option value="Atlas">Atlas</option>
+                            <option value="Story Health">Story Health</option>
+                            <option value="Galaxy">Galaxy</option>
+                            <option value="Cured">Cured</option>
+                            <option value="Humbi">Humbi</option>
+                            <option value="PQS">PQS</option>
+                        </select>
+                    </div>
+                </div>
+
+                <h4 id="signal-count-text" style="margin-bottom: 24px; color: var(--text-secondary); font-size: 14px;">4
+                    signals found sorted by score</h4>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h5>Total Signals</h5>
+                <div class="value">8</div>
+                <p style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">30-day scan window</p>
+            </div>
+            <div class="stat-card" style="border-left: 4px solid var(--accent-red);">
+                <h5>Act Immediately</h5>
+                <div class="value" style="color: var(--accent-red);">2</div>
+                <p style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Score ≥ 60, high urgency</p>
+            </div>
+            <div class="stat-card" style="border-left: 4px solid var(--accent-orange);">
+                <h5>In Digest</h5>
+                <div class="value" style="color: var(--accent-orange);">2</div>
+                <p style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Score 40-59, monitor</p>
+            </div>
+            <div class="stat-card">
+                <h5>Avg Signal Score</h5>
+                <div class="value" style="color: var(--accent-green);">66</div>
+                <p style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Across 4 signals</p>
+            </div>
+        </div>
+
+        <h4 style="margin-bottom: 24px; color: var(--text-secondary); font-size: 14px;">4 signals found sorted by score
+        </h4>
+
+        <div class="alert-feed" id="feed">
+            <!-- Signals will be injected here -->
+        </div>
+    </div>
+
+    <script>
+        let signals = [];
+
+        const feed = document.getElementById('feed');
+        const countText = document.getElementById('signal-count-text');
+        const refreshHeader = document.getElementById('last-refresh-header');
+        let currentFilter = 'All Signals';
+        let currentBrand = 'All Brands';
+
+        // Fetch signals from JSON
+        async function loadSignals() {
+            try {
+                // Show loading state
+                feed.innerHTML = '<div style="padding: 40px; text-align: center; color: var(--text-secondary);">⌛ Loading signals...</div>';
+
+                // Try to load from SIGNALS_DATA global first (from signals.js)
+                if (typeof SIGNALS_DATA !== 'undefined' && SIGNALS_DATA.length > 0) {
+                    signals = SIGNALS_DATA;
+                    console.log('Loaded signals from signals.js');
+                    renderSignals();
+                    return;
+                }
+
+                // Fallback to fetch (for server-based access)
+                const response = await fetch('signals.json');
+                if (!response.ok) throw new Error('Failed to load signals.json');
+
+                signals = await response.json();
+                renderSignals();
+            } catch (error) {
+                console.error('Error loading signals:', error);
+                if (signals.length === 0) {
+                    feed.innerHTML = `
+                        <div style="padding: 40px; text-align: center; color: var(--accent-red); background: rgba(217, 55, 55, 0.05); border-radius: 12px; border: 1px dashed var(--accent-red);">
+                            <h3>⚠️ Data Access Error</h3>
+                            <p style="margin-top: 8px; font-size: 14px; opacity: 0.8;">Browser security (CORS) blocked the data. Please run: <br><code>python3 Codes/agent.py</code><br> to update and refresh.</p>
+                        </div>`;
+                }
+            }
+        }
+
+        function updateStats() {
+            if (signals.length === 0) return;
+            const highUrgency = signals.filter(s => s.urgency === 'Immediate').length;
+            const digest = signals.filter(s => s.urgency === 'High' || s.urgency === 'Digest').length;
+            const avgScore = Math.round(signals.reduce((a, b) => a + b.score, 0) / signals.length);
+
+            document.querySelectorAll('.stat-card .value')[0].innerText = signals.length;
+            document.querySelectorAll('.stat-card .value')[1].innerText = highUrgency;
+            document.querySelectorAll('.stat-card .value')[2].innerText = digest;
+            document.querySelectorAll('.stat-card .value')[3].innerText = avgScore;
+
+            // Updated Refresh Date display
+            const now = new Date();
+            refreshHeader.innerText = `Last Refreshed: ${now.toLocaleDateString()} ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+        }
+
+        function renderSignals() {
+            feed.innerHTML = '';
+            const filtered = signals.filter(sig =>
+                (currentFilter === 'All Signals' || sig.type === currentFilter) &&
+                (currentBrand === 'All Brands' || (sig.brands && sig.brands.includes(currentBrand)))
+            );
+
+            // Update UI counts
+            document.getElementById('sidebar-total-count').innerText = signals.length;
+            document.getElementById('sidebar-strategic-count').innerText = signals.filter(s => s.tier === 'Strategics').length;
+            document.getElementById('sidebar-immediate-count').innerText = signals.filter(s => s.urgency === 'Immediate' || s.score >= 80).length;
+
+            countText.innerText = `${filtered.length} high-intent signals found from recent scans`;
+
+            updateStats();
+
+            filtered.forEach((sig, index) => {
+                const card = document.createElement('div');
+                card.className = 'signal-card';
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="score-badge">
+                            <div style="font-size: 24px;">${sig.score}</div>
+                            <span>Strong</span>
+                        </div>
+                        <div class="account-info">
+                            <h2>${sig.account}</h2>
+                            <div class="badge-group">
+                                ${sig.brands.map(b => `<span class="badge" style="background: var(--jal-default); color: white;">Brand: ${b}</span>`).join('')}
+                                <span class="badge urgency">● ${sig.urgency}</span>
+                                <span class="badge type">${sig.type}</span>
+                                <span class="badge tier">${sig.tier}</span>
+                                <span class="badge" style="background: var(--glass-bg); color: var(--text-secondary);">📍 ${sig.state}</span>
+                                ${sig.sfdcInsight ? `<span class="badge" style="background: var(--accent-blue); color: white; animation: pulse 2s infinite;">★ Salesforce Intelligence</span>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="signal-summary">${sig.summary}</div>
+                    
+                    ${sig.sfdcInsight ? `
+                    <div style="background: rgba(0, 112, 221, 0.05); border-left: 3px solid var(--accent-blue); padding: 12px 16px; margin: 16px 0; font-size: 13px; font-style: italic; color: var(--text-primary);">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px; font-weight: 700; color: var(--accent-blue); font-style: normal; font-size: 11px; text-transform: uppercase;">
+                            <span>✦ Internal Salesforce Insight</span>
+                        </div>
+                        "${sig.sfdcInsight}"
+                    </div>
+                    ` : ''}
+
+                    <div class="owners-grid">
+                        <div class="owner-item">
+                            <h6>Account Owner (AE)</h6>
+                            <p>${sig.ae}</p>
+                        </div>
+                        <div class="owner-item">
+                            <h6>SDR Assigned</h6>
+                            <p>${sig.sdr}</p>
+                        </div>
+                        <div class="owner-item">
+                            <h6>Latest Source</h6>
+                            <a href="${sig.url}" target="_blank" style="color: var(--accent-blue); font-size: 13px; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 4px;"> 
+                                🔗 ${sig.source}
+                            </a>
+                            <p style="font-size: 11px; opacity: 0.6; margin-top: 4px;">${sig.date}</p>
+                        </div>
+                        <div class="owner-item">
+                            <h6>Score Breakdown</h6>
+                            <p style="font-size: 13px;">Base 85 → <span style="color: var(--accent-red);">${sig.score}</span></p>
+                            <p style="font-size: 11px; opacity: 0.6;">x0.92 recency wt.</p>
+                        </div>
+                    </div>
+                    <div class="outreach-box">
+                        <div class="icon-blue">▶</div>
+                        <div>
+                            <span style="font-weight: 700; color: var(--accent-blue);">Outreach angle:</span>
+                            <span style="font-size: 13px; line-height: 1.5;">${sig.angle}</span>
+                        </div>
+                    </div>
+                    
+                    <div id="details-${index}" style="display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color); animation: fadeIn 0.3s ease-out;">
+                        <h4 style="font-size: 12px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 12px;">Why this matters</h4>
+                        <ul style="font-size: 13px; line-height: 1.6; color: var(--text-primary); padding-left: 20px;">
+                            ${sig.whyMatters ? sig.whyMatters.map(m => `<li>${m}</li>`).join('') : `
+                                <li>Strategic alignment with Innovaccer's core value proposition in ${sig.state}.</li>
+                                <li>High potential for multi-product expansion (Data + Care Management).</li>
+                                <li>Direct impact on ${sig.account}'s 2026 strategic objectives.</li>
+                            `}
+                        </ul>
+                        <h4 style="font-size: 12px; text-transform: uppercase; color: var(--text-secondary); margin: 16px 0 12px;">Recommended Actions</h4>
+                        <div style="font-size: 13px; color: var(--text-primary);">
+                             <strong>Next Step:</strong> ${sig.nextSteps || 'Schedule internal briefing with AE/SDR to align on outreach and proof-points.'}
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+                        <a href="javascript:void(0)" class="toggle-details" data-index="${index}" style="color: var(--accent-blue); font-size: 12px; font-weight: 600; text-decoration: none;">▼ Why this matters + Recommended Actions</a>
+                        <a href="javascript:void(0)" class="intelligence-brief" data-account="${sig.account}" style="color: var(--accent-blue); font-size: 12px; font-weight: 600; text-decoration: none;">Full Intelligence Brief ›</a>
+                    </div>
+                `;
+                feed.appendChild(card);
+            });
+
+            bindCardListeners();
+        }
+
+        function bindCardListeners() {
+            document.querySelectorAll('.toggle-details').forEach(btn => {
+                btn.onclick = (e) => {
+                    const idx = e.target.getAttribute('data-index');
+                    const details = document.getElementById(`details-${idx}`);
+                    const isVisible = details.style.display === 'block';
+                    details.style.display = isVisible ? 'none' : 'block';
+                    e.target.innerText = isVisible ? '▼ Why this matters + Recommended Actions' : '▲ Hide Details';
+                };
+            });
+
+            document.querySelectorAll('.intelligence-brief').forEach(btn => {
+                btn.onclick = (e) => {
+                    const account = e.target.getAttribute('data-account');
+                    showBriefModal(account);
+                };
+            });
+        }
+
+        function showBriefModal(account) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+                display: flex; align-items: center; justify-content: center; z-index: 1000;
+                animation: fadeIn 0.2s ease-out;
+            `;
+            modal.innerHTML = `
+                <div style="background: var(--sidebar-bg); width: 80%; max-width: 800px; padding: 40px; border-radius: 20px; border: 1px solid var(--border-color); position: relative; max-height: 90vh; overflow-y: auto;">
+                    <button id="close-modal" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; cursor: pointer; font-size: 20px;">✕</button>
+                    <h1 style="font-size: 28px; margin-bottom: 8px;">Intelligence Brief: ${account}</h1>
+                    <p style="color: var(--text-secondary); margin-bottom: 24px;">Generated March 3, 2026 • Confidential Intelligence</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                        <div>
+                            <h3 style="color: var(--accent-blue); margin-bottom: 12px;">Strategic Context</h3>
+                            <p style="font-size: 14px; line-height: 1.6; opacity: 0.9;">
+                                This account is undergoing a transformative shift in their clinical data architecture. Our research indicates a high correlation between their recent executive appointments and their move towards a unified data lakehouse.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 style="color: var(--accent-blue); margin-bottom: 12px;">Competitive Intelligence</h3>
+                            <p style="font-size: 14px; line-height: 1.6; opacity: 0.9;">
+                                Incumbent systems (Legacy EHR/Analytics) are hitting performance caps with new AI workloads. This is the prime entry point for Innovaccer's data activation layer.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px dashed var(--border-color);">
+                        <h3 style="font-size: 16px; margin-bottom: 12px;">Evidence & Citations</h3>
+                        <ul style="font-size: 13px; opacity: 0.8; line-height: 1.8;">
+                            <li>Public Procurement Portal - Biding History 2025-2026</li>
+                            <li>Earnings Transcript Q4 Analysis - Emphasis on 'Digital Efficiency'</li>
+                            <li>CDO Public Presentation - 'The Future of Care at ${account}'</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            document.getElementById('close-modal').onclick = () => modal.remove();
+            modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+        }
+
+        function setFilter(type, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = type;
+            renderSignals();
+        }
+
+        function setBrand(brand) {
+            currentBrand = brand;
+            renderSignals();
+        }
+
+        // Initialize
+        loadSignals();
+
+        // Scan button logic
+        const scanBtn = document.querySelector('.btn-scan');
+        if (scanBtn) {
+            scanBtn.addEventListener('click', () => {
+                scanBtn.innerText = '⌛ Scanning...';
+                scanBtn.disabled = true;
+                setTimeout(() => {
+                    scanBtn.innerText = '⚡ Scan Now';
+                    scanBtn.disabled = false;
+                    alert('Daily scan complete. 0 new signals found since last refresh.');
+                }, 1500);
+            });
+        }
+
+        // Sidebar navigation logic
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

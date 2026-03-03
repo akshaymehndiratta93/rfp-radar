@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Project-specific
+Data/*.json
+Data/*.csv
+!Data/.gitkeep
+tmp/
+*.log
+*.tmp
+unmounted_dom.png
+debrief_dropdown_html.txt

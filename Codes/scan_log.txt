@@ -1,0 +1,205 @@
+/Users/akshay.mehndiratta/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:246: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+/Users/akshay.mehndiratta/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+/Users/akshay.mehndiratta/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/akshay.mehndiratta/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/akshay.mehndiratta/Antigravity-Projects/rfp-radar/Codes/agent.py:12: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+[Mar 03, 2026 01:26 PM] Initializing High-Yield Google News RSS Scan...
+Executing Deep RSS scan for high-priority accounts...
+[1/807] Scanning segment starting with: Advocate Health
+[6/807] Scanning segment starting with: Cencora
+[11/807] Scanning segment starting with: Universal Health Services
+[16/807] Scanning segment starting with: Mercy (MO)
+[21/807] Scanning segment starting with: Intermountain Health
+[26/807] Scanning segment starting with: Optumcare
+[31/807] Scanning segment starting with: Ascension
+[36/807] Scanning segment starting with: Stanford Medicine
+[41/807] Scanning segment starting with: Presbyterian Healthcare Services
+[46/807] Scanning segment starting with: Memorial Hermann Health System
+[51/807] Scanning segment starting with: Gastro Health
+[56/807] Scanning segment starting with: Paradigm Management Services
+[61/807] Scanning segment starting with: Clever Care Health Plan
+[66/807] Scanning segment starting with: Riyadh First Health Cluster
+[71/807] Scanning segment starting with: NMC Healthcare
+[76/807] Scanning segment starting with: Forefront Dermatology
+[81/807] Scanning segment starting with: UAE Ministry of Health and Prevention
+[86/807] Scanning segment starting with: Council Of Health Insurance
+[91/807] Scanning segment starting with: Dubai Health Authority
+[96/807] Scanning segment starting with: WellbridgeHealth
+[101/807] Scanning segment starting with: Twareat
+[106/807] Scanning segment starting with: Ministry of National Guard Health Affairs
+[111/807] Scanning segment starting with: Health Holding Company
+[116/807] Scanning segment starting with: Jeddah First Health Cluster
+[121/807] Scanning segment starting with: CarelonRx
+[126/807] Scanning segment starting with: Northern Borders Health Cluster
+[131/807] Scanning segment starting with: Nuvation Bio
+[136/807] Scanning segment starting with: Pediatrix Medical Group
+[141/807] Scanning segment starting with: Horizon Blue Cross Blue Shield Of New Jersey
+[146/807] Scanning segment starting with: Ortho Illinois
+[151/807] Scanning segment starting with: Athena Oncology
+[156/807] Scanning segment starting with: Intercoastal Medical Group
+[161/807] Scanning segment starting with: Renal Healthcare Association
+[166/807] Scanning segment starting with: Mutual of Omaha Insurance Company
+[171/807] Scanning segment starting with: Emblemhealth
+[176/807] Scanning segment starting with: Thermo Fisher Scientific
+[181/807] Scanning segment starting with: Physicians Health Plan Of Northern Indiana
+[186/807] Scanning segment starting with: Enhabit Home Health & Hospice
+[191/807] Scanning segment starting with: Guidewell Mutual Holding Company
+[196/807] Scanning segment starting with: Halozyme
+[201/807] Scanning segment starting with: Supernus Pharmaceuticals
+[206/807] Scanning segment starting with: Exelixis
+[211/807] Scanning segment starting with: Sanofi
+[216/807] Scanning segment starting with: Daiichi Sankyo
+[221/807] Scanning segment starting with: EyeSouth Partners
+[226/807] Scanning segment starting with: Indivior
+[231/807] Scanning segment starting with: Sheikh Shakhbout Medical City
+[236/807] Scanning segment starting with: Panoramic Health
+[241/807] Scanning segment starting with: Constitution Surgery Alliance
+[246/807] Scanning segment starting with: Olympus
+[251/807] Scanning segment starting with: American Oncology Network
+[256/807] Scanning segment starting with: Neurocrine Biosciences
+[261/807] Scanning segment starting with: B. Braun
+[266/807] Scanning segment starting with: LEO Pharma
+[271/807] Scanning segment starting with: ResMed
+[276/807] Scanning segment starting with: Virginia Heart
+[281/807] Scanning segment starting with: Jazz Pharmaceuticals
+[286/807] Scanning segment starting with: Twin Cities Orthopedics
+[291/807] Scanning segment starting with: Hospital For Special Surgery
+[296/807] Scanning segment starting with: Geha
+[301/807] Scanning segment starting with: Radius Health
+[306/807] Scanning segment starting with: City of Hope
+[311/807] Scanning segment starting with: Blue Cross Blue Shield Of Arizona
+[316/807] Scanning segment starting with: Becton Dickinson
+[321/807] Scanning segment starting with: Amgen
+[326/807] Scanning segment starting with: Vaya Health
+[331/807] Scanning segment starting with: Somatus
+[336/807] Scanning segment starting with: Florida Cancer Specialists And Research Institute
+[341/807] Scanning segment starting with: Select Medical Corporation
+[346/807] Scanning segment starting with: Aligned orthopedic partners
+[351/807] Scanning segment starting with: U.S. ORTHOPAEDIC PARTNERS
+[356/807] Scanning segment starting with: Blue Cross & Blue Shield of Mississippi
+[361/807] Scanning segment starting with: Stryker
+[366/807] Scanning segment starting with: Cardinal Health
+[371/807] Scanning segment starting with: Blue Cross And Blue Shield Of Nebraska
+[376/807] Scanning segment starting with: Fallon Health
+[381/807] Scanning segment starting with: Blue Cross And Blue Shield Of Kansas City
+[386/807] Scanning segment starting with: Medica
+[391/807] Scanning segment starting with: Premera Blue Cross
+[396/807] Scanning segment starting with: Centene Corporation
+[401/807] Scanning segment starting with: Blue Shield Of California
+[406/807] Scanning segment starting with: Blue Cross Blue Shield Of Michigan
+[411/807] Scanning segment starting with: Unitedhealthcare
+[416/807] Scanning segment starting with: Nephrology Specialty IPA
+[421/807] Scanning segment starting with: Moffitt Cancer Center
+[426/807] Scanning segment starting with: Dallas Renal Group
+[431/807] Scanning segment starting with: Atlanta Womens Health Group
+[436/807] Scanning segment starting with: Renal Care Organization
+[441/807] Scanning segment starting with: The Surgery Center Of Huntsville
+[446/807] Scanning segment starting with: North Carolina Nephrology
+[451/807] Scanning segment starting with: Al Mouwasat Medical Services Company
+[456/807] Scanning segment starting with: Saudi German Health
+[461/807] Scanning segment starting with: Vandalia Health
+[466/807] Scanning segment starting with: Palm Beach Accountable Care Organization
+[471/807] Scanning segment starting with: Unitypoint Health
+[476/807] Scanning segment starting with: Martin Luther King Jr Community Hospital
+[481/807] Scanning segment starting with: CareAbout Health
+[486/807] Scanning segment starting with: Endeavor Health
+[491/807] Scanning segment starting with: Stony Brook Medicine
+[496/807] Scanning segment starting with: Main Street Rural Health
+[501/807] Scanning segment starting with: IntegraNet Health
+[506/807] Scanning segment starting with: Saint Peters Healthcare
+[511/807] Scanning segment starting with: P3 Health Partners
+[516/807] Scanning segment starting with: Palomar Health
+[521/807] Scanning segment starting with: Quorum Health Corporation
+[526/807] Scanning segment starting with: Lexington Medical Center
+[531/807] Scanning segment starting with: University Of Arkansas For Medical Sciences Medical Center
+[536/807] Scanning segment starting with: Genesis Physicians Group
+[541/807] Scanning segment starting with: Great Lakes Health System Of Western New York
+[546/807] Scanning segment starting with: Evolent Health
+[551/807] Scanning segment starting with: Emplify Health
+[556/807] Scanning segment starting with: Nemours Childrens Health System
+[561/807] Scanning segment starting with: Memorial Healthcare System
+[566/807] Scanning segment starting with: M Health Fairview
+[571/807] Scanning segment starting with: Johns Hopkins Medicine
+[576/807] Scanning segment starting with: Henry Ford Health
+[581/807] Scanning segment starting with: Hartford Healthcare
+[586/807] Scanning segment starting with: Essentia Health
+[591/807] Scanning segment starting with: Sinai Chicago
+[596/807] Scanning segment starting with: Rochester Regional Health System
+[601/807] Scanning segment starting with: Renown Health
+[606/807] Scanning segment starting with: Christus Health
+[611/807] Scanning segment starting with: Penn Highlands Healthcare
+[616/807] Scanning segment starting with: Connecticut Childrens Medical Center
+[621/807] Scanning segment starting with: Catholic Health Services Of Long Island
+[626/807] Scanning segment starting with: Ochsner Health System
+[631/807] Scanning segment starting with: Boston Medical Center
+RSS Fetch Error for Beebe Healthcare: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[636/807] Scanning segment starting with: Beacon Health System
+RSS Fetch Error for Beacon Health System: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+RSS Fetch Error for Baycare Health System: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+RSS Fetch Error for Harris Health System: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+RSS Fetch Error for Denver Health: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+RSS Fetch Error for Keck Medicine Of USC: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[641/807] Scanning segment starting with: Saint Francis Health System
+RSS Fetch Error for Saint Francis Health System: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+RSS Fetch Error for Westchester Medical Center Health Network: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+RSS Fetch Error for Mary Washington Healthcare: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+RSS Fetch Error for Bronson Healthcare: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+RSS Fetch Error for Vanderbilt Health: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[646/807] Scanning segment starting with: Cooper University Health Care
+RSS Fetch Error for Cooper University Health Care: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+RSS Fetch Error for Adena Health System: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+RSS Fetch Error for Baptist Health South Florida: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+RSS Fetch Error for Ballad Health: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+RSS Fetch Error for Avera Health: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[651/807] Scanning segment starting with: Atlantic Health System
+RSS Fetch Error for Atlantic Health System: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+RSS Fetch Error for Asante: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[656/807] Scanning segment starting with: Allina Health
+[661/807] Scanning segment starting with: Loma Linda University Health
+[666/807] Scanning segment starting with: Freeman Health System
+[671/807] Scanning segment starting with: Baptist Health
+[676/807] Scanning segment starting with: ECU Health
+[681/807] Scanning segment starting with: University of Mississippi Medical Center
+[686/807] Scanning segment starting with: University Hospitals Health System
+[691/807] Scanning segment starting with: University of Vermont Health
+[696/807] Scanning segment starting with: Tampa General Hospital
+[701/807] Scanning segment starting with: Tufts Medicine
+[706/807] Scanning segment starting with: TriHealth
+[711/807] Scanning segment starting with: Norton Healthcare
+[716/807] Scanning segment starting with: Nebraska Methodist Health System
+[721/807] Scanning segment starting with: Montefiore Health System
+[726/807] Scanning segment starting with: Ardent
+[731/807] Scanning segment starting with: Bronxcare Health System
+[736/807] Scanning segment starting with: Houston Methodist
+[741/807] Scanning segment starting with: Hawaii Pacific Health
+[746/807] Scanning segment starting with: Scripps Health
+[751/807] Scanning segment starting with: Privia Health
+[756/807] Scanning segment starting with: Umass Memorial Health Care
+[761/807] Scanning segment starting with: Legacy Health
+[766/807] Scanning segment starting with: Childrens Hospital Of Philadelphia
+[771/807] Scanning segment starting with: Childrens Minnesota
+[776/807] Scanning segment starting with: Summa Health
+RSS Fetch Error for South Shore Health: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+RSS Fetch Error for PIH Health: <urlopen error [Errno 8] nodename nor servname provided, or not known>
+[781/807] Scanning segment starting with: UW Medicine
+[786/807] Scanning segment starting with: Concord Hospital Health System
+[791/807] Scanning segment starting with: SBH Health Systems
+[796/807] Scanning segment starting with: Peacehealth
+[801/807] Scanning segment starting with: Texas Health Resources
+[806/807] Scanning segment starting with: Baptist Health (Louisville KY)
+
+Successfully processed scan.
+Last Refresh: Mar 03, 2026 01:26 PM
+Discovered 0 live, verifiable signals mapped to target accounts.

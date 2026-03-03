@@ -1,0 +1,40 @@
+name: Daily RFP Radar Scan
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Run daily at midnight UTC
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          pip install beautifulsoup4 openai
+
+      - name: Run Scan
+        env:
+          TFY_API_KEY: ${{ secrets.TFY_API_KEY }}
+          TFY_BASE_URL: ${{ secrets.TFY_BASE_URL }}
+        run: |
+          python3 Codes/agent.py
+
+      - name: Commit and Push Results
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add signals.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: update signals [skip ci]"
+          git push
