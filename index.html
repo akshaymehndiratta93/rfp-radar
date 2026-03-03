@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,128 +6,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🚨 RFP Radar – Signal Alert Feed</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            /* MDS Color Palette */
-            --jal-default: #0070DD;
-            --jal-dark: #00509F;
-            --jal-lightest: #DCECF9;
+            /* Apple-Inspired Pro Palette */
+            --bg-body: #ffffff;
+            --bg-sidebar: #fbfbfd;
+            --bg-card: #ffffff;
 
-            --mirch-default: #D93737;
-            --neem-default: #2EA843;
-            --haldi-default: #FFC208;
+            --color-primary: #1d1d1f;
+            --color-secondary: #86868b;
+            --color-tertiary: #b1b1b6;
 
-            /* Professional Dark Theme (MDS Aligned) */
-            --bg-color: #0d1117;
-            --sidebar-bg: #161b22;
-            --card-bg: #1c2128;
-            --border-color: #30363d;
-            --text-primary: #f0f6fc;
-            --text-secondary: #8b949e;
-            --text-muted: #484f58;
+            --accent-blue: #0066cc;
+            --accent-red: #ff3b30;
+            --accent-orange: #ff9500;
+            --accent-green: #34c759;
 
-            --accent-blue: var(--jal-default);
-            --accent-red: var(--mirch-default);
-            --accent-green: var(--neem-default);
-            --accent-orange: var(--haldi-default);
+            --border-subtle: #d2d2d7;
+            --border-extra-subtle: #e8e8ed;
 
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --sidebar-width: 280px;
+            --shadow-subtle: 0 2px 12px rgba(0, 0, 0, 0.04);
+            --shadow-elevated: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+            --sidebar-width: 260px;
+            --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
-            font-family: 'Nunito Sans', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Text', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--color-primary);
             display: flex;
             height: 100vh;
             overflow: hidden;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.015em;
         }
 
-        /* Sidebar */
+        /* Sidebar - The "Pro" List */
         .sidebar {
             width: var(--sidebar-width);
-            background-color: var(--sidebar-bg);
-            border-right: 1px solid var(--border-color);
-            padding: 32px 24px;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-extra-subtle);
+            padding: 40px 24px;
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 48px;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
+            padding: 0 8px;
         }
 
         .logo-box {
-            width: 36px;
-            height: 36px;
-            background-color: var(--jal-default);
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #0071e3, #00c7ff);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 800;
+            font-weight: 700;
             color: white;
-            box-shadow: 0 4px 12px rgba(0, 112, 221, 0.3);
+            font-size: 14px;
         }
 
         .nav-section h4 {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-            letter-spacing: 0.1em;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--color-secondary);
+            margin-bottom: 12px;
+            padding: 0 12px;
+            letter-spacing: 0.02em;
         }
 
         .nav-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px 14px;
-            border-radius: 6px;
+            padding: 10px 12px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            margin-bottom: 4px;
-            color: var(--text-secondary);
+            transition: var(--transition-smooth);
+            margin-bottom: 2px;
+            color: var(--color-primary);
+            font-size: 14px;
+            font-weight: 400;
         }
 
         .nav-item:hover {
-            background-color: var(--glass-bg);
-            color: var(--text-primary);
+            background-color: #ededef;
         }
 
         .nav-item.active {
-            background-color: rgba(0, 112, 221, 0.15);
-            color: var(--jal-default);
-            font-weight: 700;
-            box-shadow: inset 4px 0 0 var(--jal-default);
+            background-color: #e5f1ff;
+            color: var(--accent-blue);
+            font-weight: 500;
         }
 
         .nav-item .count {
-            background-color: rgba(255, 255, 255, 0.05);
+            background-color: rgba(0, 0, 0, 0.05);
             padding: 2px 8px;
-            border-radius: 12px;
+            border-radius: 20px;
             font-size: 11px;
             font-weight: 600;
+            color: var(--color-secondary);
         }
 
-        /* Main Content */
+        .nav-item.active .count {
+            background-color: rgba(0, 102, 204, 0.1);
+            color: var(--accent-blue);
+        }
+
+        /* Main Content - Minimal Workspace */
         .main-content {
             flex: 1;
-            padding: 48px 64px;
+            padding: 60px 80px;
             overflow-y: auto;
             scroll-behavior: smooth;
         }
@@ -134,249 +140,255 @@
         .header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 48px;
+            align-items: flex-end;
+            margin-bottom: 56px;
         }
 
         .title-group h1 {
-            font-size: 32px;
-            font-weight: 800;
+            font-size: 40px;
+            font-weight: 700;
             margin-bottom: 8px;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
         }
 
         .title-group p {
-            color: var(--text-secondary);
-            font-size: 15px;
+            color: var(--color-secondary);
+            font-size: 17px;
             font-weight: 400;
         }
 
+        /* Stats Grid - Balanced Information */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
+            gap: 32px;
             margin-bottom: 48px;
         }
 
         .stat-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+            background-color: var(--bg-card);
+            border-radius: 20px;
             padding: 24px;
-            border-radius: 16px;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.2s;
+            border: 1px solid var(--border-extra-subtle);
+            transition: var(--transition-smooth);
         }
 
         .stat-card:hover {
-            transform: translateY(-2px);
+            border-color: var(--border-subtle);
+            box-shadow: var(--shadow-subtle);
         }
 
-        .stat-card h5 {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: var(--text-secondary);
+        .stat-card .label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-secondary);
             margin-bottom: 12px;
-            letter-spacing: 0.05em;
+            display: block;
         }
 
         .stat-card .value {
-            font-size: 36px;
-            font-weight: 800;
+            font-size: 32px;
+            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
+        .stat-card .subtext {
+            font-size: 12px;
+            color: var(--color-tertiary);
+            margin-top: 8px;
+            display: block;
+        }
+
+        /* Signal Feed - Content Focus */
         .alert-feed {
             display: flex;
             flex-direction: column;
-            gap: 32px;
+            gap: 40px;
+            max-width: 960px;
         }
 
         .signal-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 32px;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-extra-subtle);
+            padding-bottom: 40px;
             position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: var(--transition-smooth);
         }
 
-        .signal-card:hover {
-            border-color: var(--jal-default);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-        }
-
-        .card-header {
+        .card-top {
             display: flex;
             gap: 24px;
             margin-bottom: 24px;
         }
 
-        .score-badge {
-            width: 72px;
-            height: 72px;
-            border: 2px solid var(--jal-default);
-            border-radius: 16px;
+        .score-indicator {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-weight: 800;
-            color: var(--jal-default);
-            background: rgba(0, 112, 221, 0.05);
+            background: #f5f5f7;
+            position: relative;
         }
 
-        .score-badge span {
-            font-size: 10px;
-            text-transform: uppercase;
+        .score-indicator .score-value {
+            font-size: 22px;
             font-weight: 700;
-            letter-spacing: 0.05em;
+            color: var(--color-primary);
         }
 
-        .account-info h2 {
-            font-size: 24px;
-            font-weight: 800;
+        .score-circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 4px solid var(--border-extra-subtle);
+            border-radius: 50%;
+        }
+
+        .score-circle-filled {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 4px solid var(--accent-blue);
+            border-radius: 50%;
+            clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 50% 0%);
+        }
+
+        .account-meta {
+            flex: 1;
+        }
+
+        .account-meta h2 {
+            font-size: 28px;
+            font-weight: 700;
             margin-bottom: 12px;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
         }
 
-        .badge-group {
+        .tag-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .badge {
-            padding: 6px 12px;
+        .tag {
+            padding: 4px 10px;
             border-radius: 6px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
+            font-size: 12px;
+            font-weight: 500;
+            background-color: #f5f5f7;
+            color: var(--color-secondary);
         }
 
-        .badge.urgency {
-            background-color: rgba(217, 55, 55, 0.15);
+        .tag.blue {
+            background-color: #e5f1ff;
+            color: var(--accent-blue);
+        }
+
+        .tag.red {
+            background-color: #fff2f1;
             color: var(--accent-red);
         }
 
-        .badge.type {
-            background-color: rgba(255, 194, 8, 0.15);
+        .tag.orange {
+            background-color: #fff8eb;
             color: var(--accent-orange);
         }
 
-        .badge.tier {
-            background-color: rgba(0, 112, 221, 0.15);
-            color: var(--jal-default);
+        .signal-body {
+            font-size: 17px;
+            line-height: 1.5;
+            color: var(--color-primary);
+            margin-bottom: 24px;
         }
 
-        .signal-summary {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 32px;
-            color: var(--text-primary);
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.02);
+        .intelligence-inset {
+            background-color: #fbfbfd;
             border-radius: 12px;
-            border-left: 4px solid var(--jal-default);
-        }
-
-        .owners-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            margin-bottom: 32px;
-            padding: 24px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-        }
-
-        .owner-item h6 {
-            font-size: 10px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: 0.05em;
-        }
-
-        .owner-item p {
+            padding: 16px 20px;
+            margin-bottom: 24px;
             font-size: 14px;
-            font-weight: 700;
+            color: var(--color-secondary);
+            border-left: 3px solid var(--accent-blue);
         }
 
-        .outreach-box {
-            background-color: rgba(0, 112, 221, 0.08);
-            border: 1px solid rgba(0, 112, 221, 0.2);
-            padding: 20px;
-            border-radius: 16px;
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 32px;
         }
 
-        .icon-blue {
-            width: 24px;
-            height: 24px;
-            background-color: var(--jal-default);
-            border-radius: 6px;
-            flex-shrink: 0;
+        .info-block label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--color-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .info-block span {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--color-primary);
+        }
+
+        .action-bar {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
         }
 
-        .btn-scan {
-            background-color: var(--jal-default);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-family: 'Nunito Sans', sans-serif;
-            cursor: pointer;
-            display: flex;
+        .btn-link {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-blue);
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(0, 112, 221, 0.2);
+            gap: 6px;
+            transition: var(--transition-smooth);
         }
 
-        .btn-scan:hover {
-            background-color: var(--jal-dark);
-            box-shadow: 0 6px 16px rgba(0, 112, 221, 0.3);
+        .btn-link:hover {
+            color: #004499;
+            gap: 8px;
         }
 
         .filter-group {
             display: flex;
-            background-color: var(--glass-bg);
-            padding: 6px;
+            background-color: #f5f5f7;
+            padding: 4px;
             border-radius: 12px;
         }
 
         .filter-btn {
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 6px 16px;
+            border-radius: 10px;
             border: none;
             background: transparent;
-            color: var(--text-secondary);
+            color: var(--color-secondary);
             cursor: pointer;
             font-size: 13px;
-            font-weight: 700;
-            font-family: 'Nunito Sans', sans-serif;
-            transition: all 0.2s;
+            font-weight: 600;
+            font-family: inherit;
+            transition: var(--transition-smooth);
         }
 
         .filter-btn.active {
-            background-color: var(--jal-default);
-            color: white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            background-color: #ffffff;
+            color: var(--color-primary);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         @keyframes fadeIn {
@@ -394,23 +406,6 @@
         .signal-card {
             animation: fadeIn 0.4s ease-out forwards;
         }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(0, 112, 221, 0.4);
-            }
-
-            70% {
-                transform: scale(1.02);
-                box-shadow: 0 0 0 10px rgba(0, 112, 221, 0);
-            }
-
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(0, 112, 221, 0);
-            }
-        }
     </style>
     <!-- Fallback for local file access (CORS bypass) -->
     <script src="signals.js"></script>
@@ -419,38 +414,51 @@
 <body>
     <div class="sidebar">
         <div class="logo-container">
-            <div class="logo-box">In</div>
+            <div class="logo-box">R</div>
             <div>
-                <h3 style="font-size: 14px;">RFP Radar</h3>
-                <p style="font-size: 11px; color: var(--text-secondary);">Innovaccer - Signal Intel</p>
+                <h3 style="font-size: 13px; font-weight: 600;">RFP Radar</h3>
+                <p style="font-size: 11px; color: var(--color-secondary);">Strategic Intelligence</p>
             </div>
         </div>
 
         <div class="nav-section">
             <h4>Intelligence</h4>
             <div class="nav-item active">
-                <span>Signal Feed</span>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i data-lucide="layers" style="width: 16px; height: 16px;"></i>
+                    <span>Signal Feed</span>
+                </div>
                 <span class="count" id="sidebar-total-count">0</span>
             </div>
             <div class="nav-item">
-                <span>Strategic Accounts</span>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i data-lucide="target" style="width: 16px; height: 16px;"></i>
+                    <span>Strategic Accounts</span>
+                </div>
                 <span class="count" id="sidebar-strategic-count">0</span>
             </div>
             <div class="nav-item">
-                <span>Immediate Focus</span>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i data-lucide="zap" style="width: 16px; height: 16px;"></i>
+                    <span>Immediate Focus</span>
+                </div>
                 <span class="count" id="sidebar-immediate-count">0</span>
             </div>
         </div>
 
         <div class="nav-section">
-            <h4>Filter By Urgency</h4>
+            <h4>Lifecycle</h4>
             <div class="nav-item">
-                <span>🔴 Immediate</span>
-                <span class="count">3</span>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i data-lucide="alert-circle" style="width: 16px; height: 16px; color: var(--accent-red);"></i>
+                    <span>Immediate</span>
+                </div>
             </div>
             <div class="nav-item">
-                <span>🟡 Digest</span>
-                <span class="count">4</span>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i data-lucide="archive" style="width: 16px; height: 16px; color: var(--accent-orange);"></i>
+                    <span>Digest</span>
+                </div>
             </div>
         </div>
     </div>
@@ -458,68 +466,50 @@
     <div class="main-content">
         <div class="header">
             <div class="title-group">
-                <h1>Alert Feed</h1>
-                <p>807 Priority Accounts · Strategics, Enterprises & Top Tier</p>
-                <p id="last-refresh-header" style="font-size: 11px; margin-top: 4px; color: var(--text-secondary);"></p>
+                <h1>Signal Feed</h1>
+                <p>807 Priority Accounts · Strategics & Enterprises</p>
             </div>
-            <div style="display: flex; gap: 12px; align-items: center;">
-                <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
-                    <div class="filter-group">
-                        <button class="filter-btn active" onclick="setFilter('All Signals', this)">All Signals</button>
-                        <button class="filter-btn" onclick="setFilter('Leadership Change', this)">Leadership</button>
-                        <button class="filter-btn" onclick="setFilter('IT Transformation', this)">IT Transf.</button>
-                        <button class="filter-btn" onclick="setFilter('M&A Activity', this)">M&A</button>
-                    </div>
-
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <span
-                            style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Brand:</span>
-                        <select id="brand-select" onchange="setBrand(this.value)"
-                            style="background: var(--glass-bg); color: var(--text-primary); border: 1px solid var(--border-color); padding: 8px 12px; border-radius: 8px; font-family: 'Nunito Sans'; font-size: 13px; font-weight: 600; outline: none;">
-                            <option value="All Brands">All Brands</option>
-                            <option value="Gravity">Gravity</option>
-                            <option value="Comet">Comet</option>
-                            <option value="Flow">Flow</option>
-                            <option value="Atlas">Atlas</option>
-                            <option value="Story Health">Story Health</option>
-                            <option value="Galaxy">Galaxy</option>
-                            <option value="Cured">Cured</option>
-                            <option value="Humbi">Humbi</option>
-                            <option value="PQS">PQS</option>
-                        </select>
-                    </div>
+            <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 8px;">
+                <div class="filter-group">
+                    <button class="filter-btn active" onclick="setFilter('All Signals', this)">All</button>
+                    <button class="filter-btn" onclick="setFilter('Leadership Change', this)">Leadership</button>
+                    <button class="filter-btn" onclick="setFilter('IT Transformation', this)">IT</button>
+                    <button class="filter-btn" onclick="setFilter('M&A Activity', this)">M&A</button>
                 </div>
-
-                <h4 id="signal-count-text" style="margin-bottom: 24px; color: var(--text-secondary); font-size: 14px;">4
-                    signals found sorted by score</h4>
+                <select id="brand-select" onchange="setBrand(this.value)"
+                    style="background: #f5f5f7; border: none; padding: 8px 12px; border-radius: 10px; font-size: 13px; font-weight: 600; outline: none; color: var(--color-primary); cursor: pointer;">
+                    <option value="All Brands">All Brands</option>
+                    <option value="Gravity">Gravity</option>
+                    <option value="Comet">Comet</option>
+                    <option value="Flow">Flow</option>
+                    <option value="Atlas">Atlas</option>
+                    <option value="Story Health">Story Health</option>
+                </select>
             </div>
         </div>
 
         <div class="stats-grid">
             <div class="stat-card">
-                <h5>Total Signals</h5>
-                <div class="value">8</div>
-                <p style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">30-day scan window</p>
-            </div>
-            <div class="stat-card" style="border-left: 4px solid var(--accent-red);">
-                <h5>Act Immediately</h5>
-                <div class="value" style="color: var(--accent-red);">2</div>
-                <p style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Score ≥ 60, high urgency</p>
-            </div>
-            <div class="stat-card" style="border-left: 4px solid var(--accent-orange);">
-                <h5>In Digest</h5>
-                <div class="value" style="color: var(--accent-orange);">2</div>
-                <p style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Score 40-59, monitor</p>
+                <span class="label">Total Alerts</span>
+                <div class="value" id="stat-total">0</div>
+                <span class="subtext">Active monitoring</span>
             </div>
             <div class="stat-card">
-                <h5>Avg Signal Score</h5>
-                <div class="value" style="color: var(--accent-green);">66</div>
-                <p style="font-size: 11px; color: var(--text-secondary); margin-top: 4px;">Across 4 signals</p>
+                <span class="label">Priority</span>
+                <div class="value" id="stat-priority" style="color: var(--accent-red);">0</div>
+                <span class="subtext">Score ≥ 80</span>
+            </div>
+            <div class="stat-card">
+                <span class="label">Monitoring</span>
+                <div class="value" id="stat-monitoring" style="color: var(--accent-orange);">0</div>
+                <span class="subtext">Score 40-79</span>
+            </div>
+            <div class="stat-card">
+                <span class="label">Avg Score</span>
+                <div class="value" id="stat-avg">0</div>
+                <span class="subtext">Signal strength</span>
             </div>
         </div>
-
-        <h4 style="margin-bottom: 24px; color: var(--text-secondary); font-size: 14px;">4 signals found sorted by score
-        </h4>
 
         <div class="alert-feed" id="feed">
             <!-- Signals will be injected here -->
@@ -569,18 +559,14 @@
 
         function updateStats() {
             if (signals.length === 0) return;
-            const highUrgency = signals.filter(s => s.urgency === 'Immediate').length;
-            const digest = signals.filter(s => s.urgency === 'High' || s.urgency === 'Digest').length;
+            const highUrgency = signals.filter(s => s.score >= 80).length;
+            const monitoring = signals.filter(s => s.score >= 40 && s.score < 80).length;
             const avgScore = Math.round(signals.reduce((a, b) => a + b.score, 0) / signals.length);
 
-            document.querySelectorAll('.stat-card .value')[0].innerText = signals.length;
-            document.querySelectorAll('.stat-card .value')[1].innerText = highUrgency;
-            document.querySelectorAll('.stat-card .value')[2].innerText = digest;
-            document.querySelectorAll('.stat-card .value')[3].innerText = avgScore;
-
-            // Updated Refresh Date display
-            const now = new Date();
-            refreshHeader.innerText = `Last Refreshed: ${now.toLocaleDateString()} ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+            document.getElementById('stat-total').innerText = signals.length;
+            document.getElementById('stat-priority').innerText = highUrgency;
+            document.getElementById('stat-monitoring').innerText = monitoring;
+            document.getElementById('stat-avg').innerText = avgScore;
         }
 
         function renderSignals() {
@@ -595,112 +581,117 @@
             document.getElementById('sidebar-strategic-count').innerText = signals.filter(s => s.tier === 'Strategics').length;
             document.getElementById('sidebar-immediate-count').innerText = signals.filter(s => s.urgency === 'Immediate' || s.score >= 80).length;
 
-            countText.innerText = `${filtered.length} high-intent signals found from recent scans`;
-
             updateStats();
 
             filtered.forEach((sig, index) => {
                 const card = document.createElement('div');
                 card.className = 'signal-card';
                 card.innerHTML = `
-                    <div class="card-header">
-                        <div class="score-badge">
-                            <div style="font-size: 24px;">${sig.score}</div>
-                            <span>Strong</span>
+                    <div class="card-top">
+                        <div class="score-indicator" style="width: 60px; height: 60px; border-radius: 50%; background: conic-gradient(var(--accent-blue) ${sig.score}%, #f5f5f7 0); display: flex; align-items: center; justify-content: center; position: relative;">
+                            <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; color: var(--color-primary);">
+                                ${sig.score}
+                            </div>
                         </div>
-                        <div class="account-info">
+                        <div class="account-meta">
                             <h2>${sig.account}</h2>
-                            <div class="badge-group">
-                                ${sig.brands.map(b => `<span class="badge" style="background: var(--jal-default); color: white;">Brand: ${b}</span>`).join('')}
-                                <span class="badge urgency">● ${sig.urgency}</span>
-                                <span class="badge type">${sig.type}</span>
-                                <span class="badge tier">${sig.tier}</span>
-                                <span class="badge" style="background: var(--glass-bg); color: var(--text-secondary);">📍 ${sig.state}</span>
-                                ${sig.sfdcInsight ? `<span class="badge" style="background: var(--accent-blue); color: white; animation: pulse 2s infinite;">★ Salesforce Intelligence</span>` : ''}
+                            <div class="tag-group">
+                                ${sig.brands.map(b => `<span class="tag blue">${b}</span>`).join('')}
+                                <span class="tag ${sig.urgency === 'Immediate' ? 'red' : 'orange'}">${sig.urgency}</span>
+                                <span class="tag">${sig.type}</span>
+                                <span class="tag">${sig.tier}</span>
+                                <span class="tag">📍 ${sig.state}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="signal-summary">${sig.summary}</div>
-                    
+
+                    <div class="signal-body">${sig.summary}</div>
+
                     ${sig.sfdcInsight ? `
-                    <div style="background: rgba(0, 112, 221, 0.05); border-left: 3px solid var(--accent-blue); padding: 12px 16px; margin: 16px 0; font-size: 13px; font-style: italic; color: var(--text-primary);">
-                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px; font-weight: 700; color: var(--accent-blue); font-style: normal; font-size: 11px; text-transform: uppercase;">
-                            <span>✦ Internal Salesforce Insight</span>
+                    <div class="intelligence-inset">
+                        <div style="font-weight: 600; color: var(--color-primary); margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+                            <i data-lucide="sparkles" style="width: 14px; height: 14px; color: var(--accent-blue);"></i>
+                            SFDC Intelligence
                         </div>
                         "${sig.sfdcInsight}"
                     </div>
                     ` : ''}
 
-                    <div class="owners-grid">
-                        <div class="owner-item">
-                            <h6>Account Owner (AE)</h6>
-                            <p>${sig.ae}</p>
+                    <div class="info-grid">
+                        <div class="info-block">
+                            <label>Account Owner</label>
+                            <span>${sig.ae}</span>
                         </div>
-                        <div class="owner-item">
-                            <h6>SDR Assigned</h6>
-                            <p>${sig.sdr}</p>
+                        <div class="info-block">
+                            <label>SDR Impact</label>
+                            <span>${sig.sdr}</span>
                         </div>
-                        <div class="owner-item">
-                            <h6>Latest Source</h6>
-                            <a href="${sig.url}" target="_blank" style="color: var(--accent-blue); font-size: 13px; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 4px;"> 
-                                🔗 ${sig.source}
+                        <div class="info-block">
+                            <label>Primary Source</label>
+                            <a href="${sig.url}" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-weight: 500; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                ${sig.source}
                             </a>
-                            <p style="font-size: 11px; opacity: 0.6; margin-top: 4px;">${sig.date}</p>
-                        </div>
-                        <div class="owner-item">
-                            <h6>Score Breakdown</h6>
-                            <p style="font-size: 13px;">Base 85 → <span style="color: var(--accent-red);">${sig.score}</span></p>
-                            <p style="font-size: 11px; opacity: 0.6;">x0.92 recency wt.</p>
-                        </div>
-                    </div>
-                    <div class="outreach-box">
-                        <div class="icon-blue">▶</div>
-                        <div>
-                            <span style="font-weight: 700; color: var(--accent-blue);">Outreach angle:</span>
-                            <span style="font-size: 13px; line-height: 1.5;">${sig.angle}</span>
-                        </div>
-                    </div>
-                    
-                    <div id="details-${index}" style="display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color); animation: fadeIn 0.3s ease-out;">
-                        <h4 style="font-size: 12px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 12px;">Why this matters</h4>
-                        <ul style="font-size: 13px; line-height: 1.6; color: var(--text-primary); padding-left: 20px;">
-                            ${sig.whyMatters ? sig.whyMatters.map(m => `<li>${m}</li>`).join('') : `
-                                <li>Strategic alignment with Innovaccer's core value proposition in ${sig.state}.</li>
-                                <li>High potential for multi-product expansion (Data + Care Management).</li>
-                                <li>Direct impact on ${sig.account}'s 2026 strategic objectives.</li>
-                            `}
-                        </ul>
-                        <h4 style="font-size: 12px; text-transform: uppercase; color: var(--text-secondary); margin: 16px 0 12px;">Recommended Actions</h4>
-                        <div style="font-size: 13px; color: var(--text-primary);">
-                             <strong>Next Step:</strong> ${sig.nextSteps || 'Schedule internal briefing with AE/SDR to align on outreach and proof-points.'}
                         </div>
                     </div>
 
-                    <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
-                        <a href="javascript:void(0)" class="toggle-details" data-index="${index}" style="color: var(--accent-blue); font-size: 12px; font-weight: 600; text-decoration: none;">▼ Why this matters + Recommended Actions</a>
-                        <a href="javascript:void(0)" class="intelligence-brief" data-account="${sig.account}" style="color: var(--accent-blue); font-size: 12px; font-weight: 600; text-decoration: none;">Full Intelligence Brief ›</a>
+                    <div class="action-bar">
+                        <div style="display: flex; gap: 24px;">
+                            <a href="javascript:void(0)" class="btn-link toggle-details" data-index="${index}">
+                                <i data-lucide="chevron-down" style="width: 16px; height: 16px;"></i>
+                                Strategic Alignment
+                            </a>
+                            <a href="javascript:void(0)" class="btn-link intelligence-brief" data-account="${sig.account}">
+                                <i data-lucide="file-text" style="width: 16px; height: 16px;"></i>
+                                Intelligence Brief
+                            </a>
+                        </div>
+                        <span style="font-size: 11px; color: var(--color-tertiary);">${sig.date}</span>
+                    </div>
+
+                    <div id="details-${index}" style="display: none; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border-extra-subtle); animation: fadeIn 0.3s ease-out;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                            <div>
+                                <h4 style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 12px;">Strategic Context</h4>
+                                <ul style="font-size: 14px; line-height: 1.6; color: var(--color-primary); padding-left: 18px;">
+                                    ${sig.whyMatters ? sig.whyMatters.map(m => `<li>${m}</li>`).join('') : `
+                                        <li>High potential for multi-product expansion.</li>
+                                        <li>Direct impact on strategic objectives.</li>
+                                    `}
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--color-secondary); margin-bottom: 12px;">Recommended Action</h4>
+                                <p style="font-size: 14px; color: var(--color-primary); line-height: 1.6;">
+                                    ${sig.nextSteps || 'Schedule internal briefing with AE/SDR to align on outreach.'}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 `;
                 feed.appendChild(card);
             });
 
             bindCardListeners();
+            lucide.createIcons();
         }
 
         function bindCardListeners() {
             document.querySelectorAll('.toggle-details').forEach(btn => {
                 btn.onclick = (e) => {
-                    const idx = e.target.getAttribute('data-index');
+                    const idx = e.currentTarget.getAttribute('data-index');
                     const details = document.getElementById(`details-${idx}`);
                     const isVisible = details.style.display === 'block';
                     details.style.display = isVisible ? 'none' : 'block';
-                    e.target.innerText = isVisible ? '▼ Why this matters + Recommended Actions' : '▲ Hide Details';
+                    e.currentTarget.innerHTML = isVisible ?
+                        '<i data-lucide="chevron-down" style="width: 16px; height: 16px;"></i> Strategic Alignment' :
+                        '<i data-lucide="chevron-up" style="width: 16px; height: 16px;"></i> Hide Details';
+                    lucide.createIcons();
                 };
             });
 
             document.querySelectorAll('.intelligence-brief').forEach(btn => {
                 btn.onclick = (e) => {
-                    const account = e.target.getAttribute('data-account');
+                    const account = e.currentTarget.getAttribute('data-account');
                     showBriefModal(account);
                 };
             });
@@ -710,38 +701,29 @@
             const modal = document.createElement('div');
             modal.style.cssText = `
                 position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+                background: rgba(255,255,255,0.8); backdrop-filter: blur(20px);
                 display: flex; align-items: center; justify-content: center; z-index: 1000;
-                animation: fadeIn 0.2s ease-out;
+                animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             `;
             modal.innerHTML = `
-                <div style="background: var(--sidebar-bg); width: 80%; max-width: 800px; padding: 40px; border-radius: 20px; border: 1px solid var(--border-color); position: relative; max-height: 90vh; overflow-y: auto;">
-                    <button id="close-modal" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; cursor: pointer; font-size: 20px;">✕</button>
-                    <h1 style="font-size: 28px; margin-bottom: 8px;">Intelligence Brief: ${account}</h1>
-                    <p style="color: var(--text-secondary); margin-bottom: 24px;">Generated March 3, 2026 • Confidential Intelligence</p>
+                <div style="background: white; width: 90%; max-width: 800px; padding: 60px; border-radius: 32px; border: 1px solid var(--border-extra-subtle); position: relative; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-elevated);">
+                    <button id="close-modal" style="position: absolute; top: 30px; right: 30px; background: #f5f5f7; border: none; width: 32px; height: 32px; border-radius: 50%; color: var(--color-primary); cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+                    <h1 style="font-size: 32px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em;">Intelligence Brief: ${account}</h1>
+                    <p style="color: var(--color-secondary); margin-bottom: 48px; font-size: 15px;">Proprietary Analysis • Generated ${new Date().toLocaleDateString()}</p>
                     
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px;">
                         <div>
-                            <h3 style="color: var(--accent-blue); margin-bottom: 12px;">Strategic Context</h3>
-                            <p style="font-size: 14px; line-height: 1.6; opacity: 0.9;">
+                            <h3 style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--accent-blue); margin-bottom: 16px; letter-spacing: 0.05em;">Strategic Context</h3>
+                            <p style="font-size: 15px; line-height: 1.6; color: var(--color-primary);">
                                 This account is undergoing a transformative shift in their clinical data architecture. Our research indicates a high correlation between their recent executive appointments and their move towards a unified data lakehouse.
                             </p>
                         </div>
                         <div>
-                            <h3 style="color: var(--accent-blue); margin-bottom: 12px;">Competitive Intelligence</h3>
-                            <p style="font-size: 14px; line-height: 1.6; opacity: 0.9;">
-                                Incumbent systems (Legacy EHR/Analytics) are hitting performance caps with new AI workloads. This is the prime entry point for Innovaccer's data activation layer.
+                            <h3 style="font-size: 12px; font-weight: 600; text-transform: uppercase; color: var(--accent-blue); margin-bottom: 16px; letter-spacing: 0.05em;">Signals Observed</h3>
+                            <p style="font-size: 15px; line-height: 1.6; color: var(--color-primary);">
+                                Incumbent systems are hitting performance caps with new workloads. This is the prime entry point for Innovaccer's data activation layer.
                             </p>
                         </div>
-                    </div>
-                    
-                    <div style="margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px dashed var(--border-color);">
-                        <h3 style="font-size: 16px; margin-bottom: 12px;">Evidence & Citations</h3>
-                        <ul style="font-size: 13px; opacity: 0.8; line-height: 1.8;">
-                            <li>Public Procurement Portal - Biding History 2025-2026</li>
-                            <li>Earnings Transcript Q4 Analysis - Emphasis on 'Digital Efficiency'</li>
-                            <li>CDO Public Presentation - 'The Future of Care at ${account}'</li>
-                        </ul>
                     </div>
                 </div>
             `;
@@ -766,20 +748,6 @@
         // Initialize
         loadSignals();
 
-        // Scan button logic
-        const scanBtn = document.querySelector('.btn-scan');
-        if (scanBtn) {
-            scanBtn.addEventListener('click', () => {
-                scanBtn.innerText = '⌛ Scanning...';
-                scanBtn.disabled = true;
-                setTimeout(() => {
-                    scanBtn.innerText = '⚡ Scan Now';
-                    scanBtn.disabled = false;
-                    alert('Daily scan complete. 0 new signals found since last refresh.');
-                }, 1500);
-            });
-        }
-
         // Sidebar navigation logic
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', () => {
@@ -791,3 +759,6 @@
 </body>
 
 </html>
+Pressing key...Getting DOM...Stopping...
+
+Stop Agent
